@@ -4,32 +4,49 @@ import ReactDOM from "react-dom/client";
 import HeaderComponent from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
-
-/*const Test = () => {
-  let [test, setTest] = useState();
-  return (
-    <>
-      <input
-        type="text"
-        value={test}
-        onChange={(e) => {
-          setTest(e.target.value);
-        }}
-      />
-      <h1>{test}</h1>
-    </>
-  );
-};*/
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Help from "./Help";
+import Contact from "./Contact";
+import Error from "./Error";
+import RestInfo from "./RestInfo";
+import KhanaClass from "./KhanaClass";
 
 const AppContent = () => {
   return (
     <>
       <HeaderComponent />
-      <Body />
+      <Outlet />
       <Footer />
     </>
   );
 };
 
+const AppRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppContent />,
+    children: [
+      { path: "/", element: <Body /> },
+      {
+        path: "/help",
+        element: <Help />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "restaurents/:id",
+        element: <RestInfo />,
+      },
+      {
+        path: "about",
+        element: <KhanaClass name={"deraj"} location={"maliyawas"} />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("container"));
-root.render(<AppContent />);
+root.render(<RouterProvider router={AppRouter} />);

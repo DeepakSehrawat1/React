@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const HeaderComponent = () => {
   return (
     <div id="mainheader">
@@ -7,19 +9,19 @@ const HeaderComponent = () => {
       />
       <ul className="list">
         <li id="li1">
-          <a>Khaana corporate</a>
+          <Link to="/about">Khaana corporate</Link>
         </li>
         <li id="li2">
-          <a>Offers</a>
+          <Link>Offers</Link>
         </li>
         <li id="li3">
-          <a>Help</a>
+          <Link to="/help">Help</Link>
         </li>
         <li id="li4">
           <a>Cart</a>
         </li>
         <li id="li5">
-          <a>Search</a>
+          <Link to="/contact">Contact Us</Link>
         </li>
       </ul>
     </div>
