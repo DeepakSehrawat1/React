@@ -1,4 +1,5 @@
 import React from "react";
+import UserClass from "./UserClass";
 
 class KhanaClass extends React.Component {
   constructor(props) {
@@ -9,11 +10,17 @@ class KhanaClass extends React.Component {
       count1: 1,
       count2: 2,
     };
+    console.log("parentConstructor");
+  }
+
+  componentDidMount() {
+    console.log("parent");
   }
 
   render() {
     const { count, count1, count2 } = this.state;
     const { name, location } = this.props;
+    console.log("parentRender");
     return (
       <>
         <h1>{name}</h1>
@@ -42,6 +49,10 @@ class KhanaClass extends React.Component {
         >
           increasw
         </button>
+
+        <UserClass task={1} />
+        <UserClass task={2} />
+        {console.log("hello")}
       </>
     );
   }
